@@ -1,12 +1,33 @@
 #include "People.h"
 
 People::People(){
-    peoplemap =
+    peoplemap = new hashmap();
 }
 
 People::~People(){
-    //dtor
+    delete peoplemap;
 }
+
+//this function takes a pointer to a parser object and calls
+bool People::Load(std::list<Person>& l, bool analyse){
+    //l is a pointer to a list of ALL of the people loaded by the parser
+
+    //then we load each person in to the hashmap
+    for(Person& p : l){
+        peoplemap.push_back(p.get_id(), p
+        totalpeople++;
+    }
+
+    if(analyse){
+        compute_incoming_relations();
+    }
+}
+
+unsigned long long get_total_people(){
+    return totalpeople;
+}
+
+Person
 
 People::compute_incoming_relations(){
     //we iterate over every person in the hashmap
