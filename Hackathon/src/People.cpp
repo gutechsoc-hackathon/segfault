@@ -1,7 +1,7 @@
 #include "People.h"
 
 People::People(){
-    peoplemap = new hashmap();
+    peoplemap = new hashmap;
 }
 
 People::~People(){
