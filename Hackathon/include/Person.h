@@ -2,6 +2,9 @@
 #define PERSON_H
 
 
+/* In C++ the interface goes in the header files and the implementation
+    goes in the source (.cpp) files. */
+    
 class Person
 {
     public:
