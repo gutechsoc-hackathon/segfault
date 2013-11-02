@@ -18,7 +18,6 @@ Parser::~Parser()
     //dtor
 }
 
-
 //parse the given file
 std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
     std::string buffer;
@@ -29,8 +28,7 @@ std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
     while (std::getline(fileStream,buffer)) {
 
         //signify the start of adding relations
-
-		if (buffer == "\n" || buffer == "" || buffer == " ")
+	if (buffer == "\n" || buffer == "" || buffer == " ")
 			continue;
 
         if(buffer == "{"){
