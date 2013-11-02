@@ -20,6 +20,8 @@ bool People::Load(std::list<Person>& l, bool analyse){
     if(analyse){
         compute_incoming_relations();
     }
+
+    return true;
 }
 
 unsigned long long get_total_people(){
