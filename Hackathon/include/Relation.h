@@ -3,7 +3,7 @@
 
 #include <list>
 
-class Relation {
+class RelationSet {
 public:
   static const int friend_of = 0,
     married_to = 1,
