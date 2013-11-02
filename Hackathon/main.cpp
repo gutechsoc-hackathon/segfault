@@ -12,7 +12,7 @@ static std::list<Person> *parse(FILE *fd) {
     char bf[1024];
     std::list<Person> people;
     Person *guy = new Person;// = (Person) malloc(sizeof(Person));
-    int go = 0; //variable to determine whether we're adding relations or IDs
+    int go = 0; //variable to determine whether we're between brackets
 
     while (fgets(bf, sizeof(bf), fd) != NULL) {
 
