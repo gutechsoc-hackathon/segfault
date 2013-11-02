@@ -11,8 +11,8 @@ class People
     public:
         People();
         ~People();
-        
-        bool load(std::list<Person> l, bool analyse);
+
+        bool load(std::list<Person>& l, bool analyse);
         Person& get_person(unsigned long long person_id);
         unsigned long long get_total_people();
 };

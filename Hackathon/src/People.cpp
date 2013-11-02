@@ -15,7 +15,6 @@ bool People::Load(std::list<Person>& l, bool analyse){
     //then we load each person in to the hashmap
     for(Person& p : l){
         peoplemap.push_back(p.get_id(), p
-        totalpeople++;
     }
 
     if(analyse){
@@ -24,10 +23,8 @@ bool People::Load(std::list<Person>& l, bool analyse){
 }
 
 unsigned long long get_total_people(){
-    return totalpeople;
+    return peopleMap.size();
 }
-
-Person
 
 People::compute_incoming_relations(){
     //we iterate over every person in the hashmap
