@@ -4,11 +4,11 @@ class Relation {
 
 public:
   
-  static final int friend_of = 0;
-  static final int married_to = 1;
-  static final int has_dated = 2;
-  static final int dislikes = 3;
-  static final int knows = 4;
+  static const int friend_of = 0;
+  static const int married_to = 1;
+  static const int has_dated = 2;
+  static const int dislikes = 3;
+  static const int knows = 4;
   
   std::list<unsigned long long> in[5];
   std::list<unsigned long long> out[5];
