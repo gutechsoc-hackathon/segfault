@@ -7,7 +7,7 @@ Main.cpp
 #include <string.h>
 #include <stdio.h>
 #include <list>
-#include <unordered_map>
+//#include <unordered_map>
 #include "People.h"
 #include "Person.h"
 #include "Relation.h"
@@ -28,7 +28,6 @@ int main(int argc, char * argc[])
 
     fd = fopen(argv[1], "r"); //open file stream
 
-    //
     if (! fd) {
         fprintf(stderr, "Unable to open input file\n", argv[1]);
         return -1;
@@ -36,7 +35,7 @@ int main(int argc, char * argc[])
 
   // 2. Use the parser class to create a list of people.
 
-  std::list& referenceToPeopleList = Parser::parse(fd);
+    std::list<People>& referenceToPeopleList = Parser::parse(fd);
 
   // 3. Query the database.
 }
