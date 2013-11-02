@@ -1,6 +1,8 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
 
+#include <list>
+#include "include\Person.h"
 
 class People
 {
