@@ -11,15 +11,4 @@ class Parser
     std::list<Person> parse(FILE * fd);
 };
 
-
-Parser::Parser()
-{
-    //ctor
-}
-
-Parser::~Parser()
-{
-    //dtor
-}
-
 #endif // PARSER_H
