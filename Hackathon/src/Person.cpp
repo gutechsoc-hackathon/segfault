@@ -1,4 +1,5 @@
-#include "Person.h"
+#include "person.h"
+#include "relation.h"
 
 /* Methods are defined here. The class defenition goes in the HEADER FILE */
 
@@ -7,7 +8,7 @@
     return id; 
   }
   
-  Relation Person :: get_relation()
+  RelationSet& Person :: get_relationSet()
   {
     return relation;
   }
@@ -16,7 +17,7 @@
   {
     id = new_id; 
   }
-  void Person :: set_relation(Relation new_relation)
+  void Person :: set_relationSet(RelationSet& new_relation)
   {
     relation = new_relation;
   }

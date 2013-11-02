@@ -2,13 +2,14 @@
 #define PEOPLE_H
 
 #include <list>
-#include "include\Person.h"
+#include <unordered_map>
+#include "person.h"
 
 class People
 {
     typedef std::unordered_map<unsigned long long, Person> Hashmap;
     private:
-        Hashmap peopleMap;
+        Hashmap* peopleMap;
         void compute_incoming_relations();
     public:
         People();

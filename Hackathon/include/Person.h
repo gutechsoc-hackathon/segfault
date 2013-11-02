@@ -4,16 +4,19 @@
 /* In C++ the interface goes in the header files and the implementation
     goes in the source (.cpp) files. */
     
+
+#include "relation.h"
+
 class Person {
 public:
   unsigned long long id;
-  Relation relation;
+  RelationSet relation;
 
   unsigned long long get_id();
-  Relation get_relation();
   
   void set_id(unsigned long long new_id);
-  void set_relation(Relation new_relation);
+  RelationSet& get_relationSet();
+  void set_relationSet(RelationSet& relationSet);
 };
 
 

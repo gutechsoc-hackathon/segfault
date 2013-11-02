@@ -1,4 +1,4 @@
-#include "Queries.h"
+#include "queries.h"
 
 Queries::Queries()
 {

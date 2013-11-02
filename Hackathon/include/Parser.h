@@ -1,25 +1,15 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include "person.h"
 
 class Parser
 {
-   public:
+ public:
    Parser();
    ~Parser();
    
-    std::list<Person> parse(FILE * fd);
+    std::list<Person>* parse(std::ifstream& fd);
 };
-
-
-Parser::Parser()
-{
-    //ctor
-}
-
-Parser::~Parser()
-{
-    //dtor
-}
 
 #endif // PARSER_H
