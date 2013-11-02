@@ -2,13 +2,16 @@
 #include <string.h>
 #include <stdio.h>
 #include <list>
+#include "include/People.h"
+#include "include/Person.h"
+#include "include/Relation.h"
 
 
 //parse the given file
 static std::list<Person> *parse(FILE *fd) {
     char bf[1024];
     std::list<Person> people;
-    Person guy = (Person) malloc(sizeof(Person));
+    Person *guy = new Person;// = (Person) malloc(sizeof(Person));
     int go = 0; //variable to determine whether we're adding relations or IDs
 
     while (fgets(bf, sizeof(bf), fd) != NULL) {
@@ -23,8 +26,8 @@ static std::list<Person> *parse(FILE *fd) {
         else if(strcmp(bf,"}") == 0) {
             go = 0;
             people.push_front(guy); //add to LL
-            free(guy);
-            guy = (Person)malloc(sizeof(Person));
+            delete guy;
+            Person *guy = new Person;
             continue;
         }
 
@@ -39,6 +42,7 @@ static std::list<Person> *parse(FILE *fd) {
         else {
             char *part;
             part = strtok(bf, " ");
+            int type;
             if(part == "FRIEND_OF") type = 0;
             else if(part == "MARRIED_TO") type = 1;
             else if(part == "HAS_DATED") type = 2;
@@ -58,7 +62,6 @@ static std::list<Person> *parse(FILE *fd) {
 int main(int argc, char *argv[])
 {
     FILE *fd;
-    PersonsLL *persons;
 
     //check if there is a specified input file
     if (argc < 1) {
@@ -74,10 +77,13 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    PersonsLL* people = parse(fd);
+    std::list<Person>* people = parse(fd);
+
 
     for(int i = 0; i < people.getSize(); ++i)
         printf("%s\n", people.getPerson(i).getID);
+
+
 
     return 0;
 }
