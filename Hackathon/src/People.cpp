@@ -14,14 +14,12 @@ bool People::Load(std::list<Person>& l, bool analyse){
 
     //then we load each person in to the hashmap
     for(Person& p : l){
-      peoplemap.push_back(p.get_id());
+        peoplemap.push_back(p.get_id(), p
     }
 
     if(analyse){
         compute_incoming_relations();
     }
-
-    return true;
 }
 
 unsigned long long get_total_people(){
