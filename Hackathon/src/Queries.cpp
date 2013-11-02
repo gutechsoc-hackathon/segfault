@@ -1,11 +1,17 @@
 #include "queries.h"
 
-Queries::Queries()
+QueryCaller::QueryCaller(People& newPeople) :
+	people(newPeople)
 {
     //ctor
 }
 
-Queries::~Queries()
+QueryCaller::~QueryCaller()
 {
     //dtor
+}
+
+size_t QueryCaller::howManyPeopleAreThere()
+{
+	return (size_t) people.get_total_people();
 }
