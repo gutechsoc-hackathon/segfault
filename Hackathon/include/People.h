@@ -4,23 +4,17 @@
 
 class People
 {
-    typedef std::tr1::unordered_map< unsigned long long, Person > hashmap;
-    public:
-        People(fileloader* f);
-        bool load();
-        Person get_person(unsigned long long person_id);
-        int get_total_people();
-        virtual ~People();
-    protected:
+    typedef std::unordered_map<unsigned long long, Person> Hashmap;
     private:
-        hashmap peoplemap;
-        unsigned int totalPeople;
-
-        void add_people_to_map();
-        void get_person_at_index();
+        Hashmap peopleMap;
         void compute_incoming_relations();
-
-
+    public:
+        People();
+        ~People();
+        
+        bool load(std::list<Person> l, bool analyse);
+        Person& get_person(unsigned long long person_id);
+        unsigned long long get_total_people();
 };
 
 #endif // PEOPLE_H
