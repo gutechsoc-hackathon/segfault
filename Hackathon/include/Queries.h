@@ -3,6 +3,8 @@
 
 #include "people.h"
 
+// When you're writing a query, mark your name beside the one you are writing so we don't have duplicates, thanks.
+
 class QueryCaller
 {
 	// This class is constructed with a People object, and will continue to use
