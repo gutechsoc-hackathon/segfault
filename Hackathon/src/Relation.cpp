@@ -1,3 +1,4 @@
+#include "Relation.h"
 #include <list>
 
 class Relation {
