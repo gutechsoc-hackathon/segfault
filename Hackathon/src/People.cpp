@@ -19,12 +19,13 @@ bool People::load(std::list<Person>& personList, bool analyse){
 
 	if(analyse){
 		computeIncomingRelations();
+		totalpeople++;
 	}
 	return true;
 }
 
 unsigned long long People :: getTotalPeople(){
-	return peopleMap ? peopleMap->size() : 0;
+	return totalpeople;
 }
 
 void People::computeIncomingRelations(){
