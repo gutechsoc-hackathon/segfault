@@ -5,6 +5,7 @@
     goes in the source (.cpp) files. */
     
 #include "relation.h"
+#include <string>
 
 class Person {
 public:
