@@ -3,10 +3,10 @@
 
 void RelationSet :: addIn(int newRelationType, unsigned long long id)
 {
- in[relation_type].push_back(id);
+ in[newRelationType].push_back(id);
 }
 
 void RelationSet :: addOut(int newRelationType, unsigned long long id)
 {
- out[relation_type].push_back(id);
+ out[newRelationType].push_back(id);
 }
