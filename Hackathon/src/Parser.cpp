@@ -49,7 +49,7 @@ std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
         if(!go) {
             long long unsigned idi = std::stoull(buffer.c_str());
 			
-            guy.set_id(idi);
+            guy.setID(idi);
         }
 
         //if we are adding relations, split by space, send (type, id) to person class
@@ -65,7 +65,7 @@ std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
             else if(firstWordInBuffer == "DISLIKES") type = 3;
             else if(firstWordInBuffer == "KNOWS") type = 4;
             
-            guy.get_relationSet().add_out(type, std::stoull(buffer.substr(spaceFoundPosition,buffer.size()-1).c_str()));
+            guy.getRelationSet().addOut(type, std::stoull(buffer.substr(spaceFoundPosition,buffer.size()-1).c_str()));
 
         }
     }
