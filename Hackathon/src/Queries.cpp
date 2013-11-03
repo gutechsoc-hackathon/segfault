@@ -144,73 +144,182 @@ void QueryCaller :: drawVisualisation()
 	size_t numberOfRelationships = 0;
 
 	auto peopleMap = people.getPeopleMap();
-	auto currentPerson = peopleMap->begin();
-
-	// Find noR.
-	for (size_t i = 0; i < 5; ++i)
-	{
-		numberOfRelationships += currentPerson->second.getRelationSet().out[i].size();
-	}
 
 
-	std::cout << "+ ";
-	std::cout << std::string(19,'-') << " +\n";
+	std::string currentUserInput = "";
+	Person* currentPerson = &(*peopleMap->begin()).second;
+	do {
 
-	std::string relationshipTypenames[] = {
-		"is friends with-",
-		"is married to---",
-		"has dated-------",
-		"dislikes--------",
-		"knows-----------",
 
-		"is a friend of--",
-		"is married by---",
-		"was dated by----",
-		"is disliked by--",
-		"is known by-----"};
-
-	size_t currentRelationshipArrow = 0;
-
-	for (size_t currentRow = 0; currentRow < 13;
-		++currentRow)
-	{
-		std::cout << "| ";
-
-		if (currentRow == 5)
+		// Find noR.
+		for (size_t i = 0; i < 5; ++i)
 		{
-			std::cout << std::setw(19) << std::setfill('0') 
-		<< currentPerson->first;
-			
+			numberOfRelationships += currentPerson->getRelationSet().out[i].size();
 		}
-		else if (currentRow == 4)
+
+
+		std::cout << "+ ";
+		std::cout << std::string(10,'-') << " +\n";
+
+		std::string relationshipTypenames[] = {
+			"is friends with",
+			"is married to--",
+			"has dated------",
+			"dislikes-------",
+			"knows----------",
+
+			"is a friend of-",
+			"is married by--",
+			"was dated by---",
+			"is disliked by-",
+			"is known by----"};
+
+		size_t currentRelationshipArrow = 0;
+
+		for (size_t currentRow = 0; currentRow < 20;
+			++currentRow)
 		{
-			std::cout <<
-				"Person:" << std::string(12,' ');
+			std::cout << "| ";
+
+			std::string personIDStr = std::to_string(currentPerson->getID()) + std::string(20 - std::to_string(currentPerson->getID()).length(),' ');
+
+			if (currentRow == 5)
+				std::cout << personIDStr.substr(0,5) << "     ";
+			else if (currentRow == 6)
+				std::cout << personIDStr.substr(5,5) << "     ";
+			else if (currentRow == 7)
+				std::cout << personIDStr.substr(10,5) << "     ";
+			else if (currentRow == 8)
+				std::cout << personIDStr.substr(15,5) << "     ";
+
+
+			else if (currentRow == 4)
+			{
+				std::cout <<
+					"Person:" << std::string(3,' ');
+			}
+			else
+			{
+				std::cout << std::string(10,' ');
+			}
+			std::cout << " |";
+
+			// Draw any relationships.
+
+			if (currentRelationshipArrow < 5)
+			{
+				if ((currentRow + 1) % 4 == 0)
+				{
+					std::cout << std::string(19,' ');
+					// Draw the next row.
+					for (size_t k = 0; k <
+						currentPerson->getRelationSet().
+						out[currentRelationshipArrow].size(); 
+					++k)
+						std::cout << "_____________ ";
+				}
+
+				else if ((currentRow - 1) % 4 == 0)
+				{
+					std::cout << std::string(19,' ');
+					// Draw the next row.
+					for (size_t k = 0; k <
+						currentPerson->getRelationSet().
+						out[currentRelationshipArrow-1].size(); 
+					++k)
+						std::cout << "````````````` ";
+				}
+
+				else if (currentRow % 4 == 0)
+				{
+					// Draw a relationship.
+
+					std::cout << "-" << 
+						relationshipTypenames[currentRelationshipArrow]
+					<< "-> ";
+
+					// Now, for each relationship of this type.
+
+					std::string otherPeople = 
+						currentPerson->getRelationSet()
+						.out[currentRelationshipArrow].size() ? "" : "(nobody)";
+
+					for (unsigned long long j :
+					currentPerson->getRelationSet().
+						out[currentRelationshipArrow])
+					{
+						otherPeople += "| P " + std::to_string(
+							j).substr(0,4) + "... | ";
+					}
+
+					std::cout << otherPeople;
+
+					++currentRelationshipArrow;
+				}
+			}
+
+			std::cout << "\n";
+		}
+
+		std::cout << "+ ";
+		std::cout << std::string(10,'-') << " +\n";
+
+		std::cout << "Enter the first four digits of the person ID of the person you would like to display, or the"
+			" full person ID of a person you would like to display (or nothing to exit)>";
+		std::cin >> currentUserInput;
+
+		// Iterate thru all of the outgoing r/ships of THIS person, and find
+		// the one the user wants.
+
+		bool fullName = currentUserInput.length() != 4;
+
+		bool foundUserChoice = false;
+
+		if (fullName)
+		{
+			auto searchPerson = peopleMap->find(std::stoull(currentUserInput.c_str()));
+
+			if (searchPerson != peopleMap->end())
+			{
+				// We found a person.
+				currentPerson = &searchPerson->second;
+				foundUserChoice = true;
+			}
 		}
 		else
 		{
-			std::cout << std::string(19,' ');
+			for (size_t k = 0; k < 5; ++k)
+			{
+				for (unsigned long long j :
+				currentPerson->getRelationSet().
+					out[k])
+				{
+					// For every r.ship.
+
+
+					if (std::to_string(j).substr(0,4) == currentUserInput)
+					{
+						auto searchPerson = peopleMap->find(j);
+
+						if (searchPerson != peopleMap->end())
+						{
+							// We found a person.
+							currentPerson = &searchPerson->second;
+							foundUserChoice = true;
+						}
+					}
+				}
+			}
 		}
-		std::cout << " |";
 
-		// Draw any relationships.
-
-		
-		if (currentRow % 3 == 0 && currentRelationshipArrow < 5)
+		if (foundUserChoice == false)
 		{
-			// Draw a relationship.
-
-			std::cout << "----" << 
-				relationshipTypenames[currentRelationshipArrow]
-				<< "--->";
-
-			++currentRelationshipArrow;
+			std::cout << "NO SUCH PERSON. PRESS ANY KEY...\n";
+			std::getchar();
 		}
 
-		std::cout << "\n";
-	}
+		for (size_t k = 0; k < 500; ++k);
+		std::cout<<"\n";
 
-	std::cout << "+ ";
-	std::cout << std::string(19,'-') << " +\n";
-
+	} while(currentUserInput != "");
 }
