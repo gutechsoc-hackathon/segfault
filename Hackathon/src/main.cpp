@@ -93,7 +93,7 @@ int main(int argc, char * argv[])
 	startTime = std::clock();
 	
 	std::cout << "Question E: Finding The most disliked person.\n";
-	std::cout << "Poor person ID " << queryCaller.MostDisliked().getID() << " is the most disliked.\n";
+	std::cout << "Poor person ID " << queryCaller.mostDisliked().getID() << " is the most disliked.\n";
 	std::cout << "Took " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
