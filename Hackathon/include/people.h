@@ -7,7 +7,9 @@
 
 class People
 {
-    typedef std::unordered_map<unsigned long long, Person> Hashmap;
+    public:
+        typedef std::unordered_map<unsigned long long, Person> Hashmap;
+    
     private:
         Hashmap* peopleMap;
         void computeIncomingRelations();
