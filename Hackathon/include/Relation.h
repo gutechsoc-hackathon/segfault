@@ -14,8 +14,8 @@ public:
     dislikes = 3,
     knows = 4;
 
-  void add_in(int relation_type, unsigned long long id);
-  void add_out(int relation_type, unsigned long long id);
+  void addIn(int newRelationType, unsigned long long id);
+  void addOut(int newRelationType, unsigned long long id);
 };
 
 
