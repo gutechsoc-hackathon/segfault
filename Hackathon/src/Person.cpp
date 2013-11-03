@@ -3,7 +3,7 @@
 #include <iomanip>
 
 #include "../include/person.h"
-#include "relation.h"
+#include "../include/relation.h"
 
 /* Methods are defined here. The class defenition goes in the HEADER FILE */
 
