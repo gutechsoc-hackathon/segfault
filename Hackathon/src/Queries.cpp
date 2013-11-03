@@ -48,3 +48,21 @@ size_t QueryCaller::howManyNarcissists()
 	
 	return 0;
 }
+
+Person& QueryCaller::MostDisliked()
+{
+    Person* personPointer;
+    unsigned int mostdislikes = 0;
+    for (std::pair<unsigned long long, Person> hashmapRow : *p.getPeopleMap())
+	{
+		Person& p = hashmapRow.second;
+		int dislikes = p.getRelationSet().in[RelationSet.dislikes].size();
+		
+		if(dislikes>mostdislikes){
+            mostdislikes = dislikes;
+            personPointer = &p;
+		}
+	}
+	
+	return *personPointer;
+}
