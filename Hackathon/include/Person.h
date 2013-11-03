@@ -16,6 +16,8 @@ public:
   void setID(unsigned long long new_id);
   RelationSet& getRelationSet();
   void setRelationSet(RelationSet& relationSet);
+  
+  std::string getStringRepresentation() const;
 };
 
 #endif // PERSON_H
