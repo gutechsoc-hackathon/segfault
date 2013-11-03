@@ -1,5 +1,6 @@
 #include "Queries.h"
 #include "Relation.h"
+#include <list>
 
 QueryCaller::QueryCaller(People& newPeople) :
 people(newPeople)
@@ -68,3 +69,20 @@ Person& QueryCaller::MostDisliked()
 	return *personPointer;
 }
 
+size_t QueryCaller::numberOfMutualFriends()
+{
+	int friendships = 0;
+	for (std::pair<unsigned long long, Person> hashmapRow : *people.getPeopleMap())
+	{
+		Person& p = hashmapRow.second;
+		std::list<unsigned long long> going = p.getRelationSet().out[RelationSet::friend_of];
+		std::list<unsigned long long> coming = p.getRelationSet().in[RelationSet::friend_of];
+
+		for (auto i : going)
+		for (auto j : coming)
+		if (i == j)
+			friendships++;
+	}
+
+	return (friendships / 2);
+}
