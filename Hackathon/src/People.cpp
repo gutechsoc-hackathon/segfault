@@ -1,4 +1,4 @@
-#include "people.h"
+#include "../include/people.h"
 
 People::People(){
 	peopleMap = new Hashmap;
