@@ -16,10 +16,10 @@ Main.cpp
 #include <string>
 #include <ctime>
 
-#include "people.h"
-#include "person.h"
-#include "relation.h"
-#include "parser.h"
+#include "../include/people.h"
+#include "../include/person.h"
+#include "../include/relation.h"
+#include "../include/parser.h"
 
 int main(int argc, char * argv[])
 {
