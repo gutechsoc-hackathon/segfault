@@ -1,3 +1,7 @@
+#include <string>
+#include <sstream>
+#include <iomanip>
+
 #include "person.h"
 #include "relation.h"
 
@@ -21,6 +25,7 @@ void Person :: setRelationSet(RelationSet& newRelation)
 {
 	relation = newRelation;
 }
+
 std::string Person :: getStringRepresentation()
 {
 	std::stringstream  stringStream;
@@ -29,14 +34,31 @@ std::string Person :: getStringRepresentation()
 		"is married to   ",
 		"has dated       ",
 		"dislikes        ",
-		"knows           "};
+		"knows           ",
 
-	stringStream << "Person " << getID() << ":";
+		"is a friend of  ",
+		"is married by   ",
+		"was dated by    ",
+		"is disliked by  ",
+		"is known by     "};
+
+	stringStream << "Person " << getID() << ":\n\toutgoing>";
 
 	for (size_t i = 0; i < 5; ++i)
+	{
 		for (unsigned long long otherPerson : getRelationSet().out[i])
-			stringStream << "\n\t" << relationshipTypenames[i] 
+			stringStream << "\n\t  " << relationshipTypenames[i] 
 			<< std::setw(19) << std::setfill('0') << otherPerson;
+	}
+
+	stringStream << "\n\tincoming>";
+
+	for (size_t i = 0; i < 5; ++i)
+	{
+		for (unsigned long long otherPerson : getRelationSet().in[i])
+			stringStream << "\n\t  " << relationshipTypenames[i + 5] 
+			<< std::setw(19) << std::setfill('0') << otherPerson;
+	}
 
 	return stringStream.str();
 }
