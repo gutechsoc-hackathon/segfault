@@ -18,7 +18,7 @@ public:
   RelationSet& getRelationSet();
   void setRelationSet(RelationSet& relationSet);
   
-  std::string getStringRepresentation() const;
+  std::string getStringRepresentation();
 };
 
 #endif // PERSON_H
