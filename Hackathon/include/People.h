@@ -18,6 +18,7 @@ class People
         bool load(std::list<Person>& l, bool analyse);
         Person& getPerson(unsigned long long person_id);
         unsigned long long getTotalPeople();
+        Hashmap* getPeopleMap();
 };
 
 #endif // PEOPLE_H
