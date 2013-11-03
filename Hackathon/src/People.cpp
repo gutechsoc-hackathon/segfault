@@ -49,6 +49,11 @@ void People::computeIncomingRelations(){
 	}
 	
 }
+
+People::Hashmap* People :: getPeopleMap()
+{
+	return peopleMap;
+}
 	/*
 	for( Hashmap::iterator i = peopleMap->begin(), e = peopleMap->end() ; i != e ; ++i ) {
 		//i->first
