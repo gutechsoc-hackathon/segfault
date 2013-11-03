@@ -1,5 +1,5 @@
 #include "../include/queries.h"
-#include "..include/relation.h"
+#include "../include/relation.h"
 #include <list>
 #include <iostream>
 #include <iomanip>
