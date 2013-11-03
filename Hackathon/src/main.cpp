@@ -22,22 +22,31 @@ int main(int argc, char * argv[])
 {
 	// 1. Load the file into a file pointer.
 	//check if there is a specified input file
-	if (argc < 2)
-		return -99;
+	//if (argc < 2)
+	//
 
-	std::ifstream fd = std::ifstream("C:\\Users\\Michael McKay\\Desktop\\segfault-master\\relationships-small.txt");
+	//return -99;
+
+	std::ifstream fd("C:\\relationships-small.txt");
 	if (fd.bad())
 		return -88;
 
+	std::cout << "Found file... Loading the data from the file..." <<std::endl;
 	// 2. Use the parser class to create a list of people.
 	Parser parser;
 	std::list<Person>* pointerToPeopleList = parser.parse(fd);
 
-	// 3. Query the database.
+	std::cout << "Done." << std::endl << std::endl;
 
-	for (auto x : *pointerToPeopleList)
+	// 3. Creating a People object and passing it a pointer to the people liat.
+	std::cout << "loading list of people in to hashmap..." << std::endl;
+	People p;
+	p.load(*pointerToPeopleList, true);
+	std::cout << "Done." << std:: endl << std::endl;
+
+	for (std::pair<unsigned long long, Person> hashmapRow : *p.getPeopleMap())
 	{
-		std::cout << x.get_relationSet().out[0].back() << std::endl;
+		std::cout << hashmapRow.second.getStringRepresentation() << "\n";	
 	}
 
 	delete pointerToPeopleList;
