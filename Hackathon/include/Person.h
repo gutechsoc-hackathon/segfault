@@ -18,5 +18,4 @@ public:
   void setRelationSet(RelationSet& relationSet);
 };
 
-
 #endif // PERSON_H
