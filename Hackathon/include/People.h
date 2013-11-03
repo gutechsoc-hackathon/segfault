@@ -11,6 +11,7 @@ class People
     private:
         Hashmap* peopleMap;
         void computeIncomingRelations();
+        unsigned long long totalpeople = 0;
     public:
         People();
         ~People();
