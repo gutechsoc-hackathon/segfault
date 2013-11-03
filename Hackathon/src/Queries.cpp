@@ -54,7 +54,7 @@ size_t QueryCaller::howManyNarcissists()
 	return 0;
 }
 
-Person& QueryCaller::whoIsDislikedTheMost()
+Person& QueryCaller::mostDisliked()
 {
 	Person* personPointer = NULL;
 	int mostdislikes = 0;
