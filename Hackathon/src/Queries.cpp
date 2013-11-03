@@ -86,3 +86,50 @@ size_t QueryCaller::numberOfMutualFriends()
 
 	return (friendships / 2);
 }
+
+std::pair<long, long> averageNumberOfRelationshipsForOddEvenPeople()
+{
+	int oddPeople = 0;
+	int evenPeople = 0;
+	int oddRels = 0;
+	int evenRels = 0;
+
+	for (std::pair<unsigned long long, Person> hashmapRow : *people.getPeopleMap())
+	{
+		Person& p = hashmapRow.second;
+		if ((p.getID() % 10) % 2 == 0) 
+		{
+			evenPeople++;
+			evenRels += p.getRelationSet().in[RelationSet::friend_of].size() +
+						p.getRelationSet().in[RelationSet::dislikes].size() +
+						p.getRelationSet().in[RelationSet::has_dated].size() +
+						p.getRelationSet().in[RelationSet::knows].size() +
+						p.getRelationSet().in[RelationSet::married_to].size() +
+						p.getRelationSet().out[RelationSet::friend_of].size() +
+						p.getRelationSet().out[RelationSet::dislikes].size() +
+						p.getRelationSet().out[RelationSet::has_dated].size() +
+						p.getRelationSet().out[RelationSet::knows].size() +
+						p.getRelationSet().out[RelationSet::married_to].size();
+		}
+
+		else
+		{
+			oddPeople++;
+			oddRels += p.getRelationSet().in[RelationSet::friend_of].size() +
+				p.getRelationSet().in[RelationSet::dislikes].size() +
+				p.getRelationSet().in[RelationSet::has_dated].size() +
+				p.getRelationSet().in[RelationSet::knows].size() +
+				p.getRelationSet().in[RelationSet::married_to].size() +
+				p.getRelationSet().out[RelationSet::friend_of].size() +
+				p.getRelationSet().out[RelationSet::dislikes].size() +
+				p.getRelationSet().out[RelationSet::has_dated].size() +
+				p.getRelationSet().out[RelationSet::knows].size() +
+				p.getRelationSet().out[RelationSet::married_to].size();
+		}
+
+		std::pair<long, long> result;
+		result.first = evenRels / evenPeople;
+		result.second = oddRels / oddPeople;
+
+		return result;
+}
