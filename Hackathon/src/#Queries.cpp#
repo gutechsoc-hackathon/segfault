@@ -51,7 +51,7 @@ size_t QueryCaller::howManyNarcissists()
 		}
 	}
 
-	return narcissistsFound;
+	return 0;
 }
 
 Person& QueryCaller::mostDisliked()

@@ -27,12 +27,17 @@ int main(int argc, char * argv[])
 	clock_t startTime;
   	startTime = std::clock();
   	//diff = ( std::clock() - start ) / (double)CLOCKS_PER_SEC;
-	if (argc < 2)
-		return 1;
+	//if (argc < 2)
+	//	return 1;
 
 	std::cout << "Attempting to load file from disk...\n";
+	//std::ifstream readFileStream("/home/ubuntu/program/segfault/relationships-small.txt");
 	std::ifstream readFileStream("/home/ubuntu/relationships-big.txt");
 
+	if (!readFileStream.is_open()) {
+	  std::cout << "not open, tough";
+		return 2;
+	}
 	if (readFileStream.bad())
 		return 2;
 	

@@ -27,6 +27,8 @@ std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
 
     while (std::getline(fileStream,buffer)) {
 
+      //    std::cout << buffer << "\n";
+
         //signify the start of adding relations
 	if (buffer == "\n" || buffer == "" || buffer == " ")
 			continue;
@@ -47,13 +49,19 @@ std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
 
         //if not adding relations, then we are adding IDs
         if(!go) {
-            long long unsigned idi = std::stoull(buffer.c_str());
+	    char dummychar[24];
+	    char* dummycharpointer = &dummychar[0];
+
+            long long unsigned idi = std::strtoull(buffer.c_str(), &dummycharpointer, 10);
 			
             guy.setID(idi);
         }
 
         //if we are adding relations, split by space, send (type, id) to person class
         else {
+	    char dummychar[24];
+	    char* dummycharpointer = &dummychar[0];
+
             size_t spaceFoundPosition = buffer.find_last_of(" ");
             int type = 0;
             
@@ -65,10 +73,12 @@ std::list<Person>* Parser :: parse(std::ifstream& fileStream) {
             else if(firstWordInBuffer == "DISLIKES") type = 3;
             else if(firstWordInBuffer == "KNOWS") type = 4;
             
-            guy.getRelationSet().addOut(type, std::stoull(buffer.substr(spaceFoundPosition,buffer.size()-1).c_str()));
+            guy.getRelationSet().addOut(type, std::strtoull(buffer.substr(spaceFoundPosition,buffer.size()-1).c_str(),&dummycharpointer,10));
 
         }
     }
+
+    //    std::cout <<  people->size();
 
     // fclose(fd); This method only uses the file pointer: it is not responsile
     // for closing the file handler.
