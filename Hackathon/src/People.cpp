@@ -15,11 +15,11 @@ bool People::load(std::list<Person>& personList, bool analyse){
 	//then we load each person in to the hashmap
 	for(Person& person : personList){
 		peopleMap->emplace(person.getID(),person);
+		totalpeople++;
 	}
 
 	if(analyse){
 		computeIncomingRelations();
-		totalpeople++;
 	}
 	return true;
 }
