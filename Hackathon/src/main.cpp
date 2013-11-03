@@ -13,6 +13,8 @@ Main.cpp
 #include <unordered_map>
 #include <fstream>
 #include <iostream>
+#include <string>
+
 #include "people.h"
 #include "person.h"
 #include "relation.h"
