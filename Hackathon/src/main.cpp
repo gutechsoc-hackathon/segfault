@@ -44,7 +44,7 @@ int main(int argc, char * argv[])
 	Parser parser;
 	std::list<Person>* pointerToPeopleList = parser.parse(readFileStream);
 	
-	std::cout << "Finished parsing. Done in" << ((std::clock() - startTime )) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
+	std::cout << "Finished parsing. Done in" << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
 	
 	//Loading the Person objects in to the People data structure
 	std::cout << "Loading list of people in to data structure and analysing them...\n";
