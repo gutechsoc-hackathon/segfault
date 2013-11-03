@@ -18,7 +18,7 @@ bool People::load(std::list<Person>& personList, bool analyse){
 	}
 
 	if(analyse){
-		person.computeIncomingRelations();
+		computeIncomingRelations();
 	}
 	return true;
 }
@@ -56,26 +56,3 @@ People::Hashmap* People :: getPeopleMap()
 {
 	return peopleMap;
 }
-	/*
-	for( Hashmap::iterator i = peopleMap->begin(), e = peopleMap->end() ; i != e ; ++i ) {
-		//i->first
-		//i->second
-		RelationSet r = (i->second).get_relation();
-		//iterating over the relations this person has and adding them to the
-		for(int relationshiptype = 0; relationshiptype < 5; ++relationshiptype){
-			std::list<unsigned long long>* relationships = r.get_out(relationshiptype);
-			for(unsigned long long secondPerson : *relationships){
-				//we are now iterating over the individual relationships. we are going to find the oerson in the peoplemap
-				//and add an incoming relationship for the person value currently at i->first when the relationship type is 'relationshiptype'
-				
-
-				p->second.set_relation(
-					(p->second.get_relation()).add_in(relationshiptype, i->first)
-					);//adding the input value to the
-
-				peoplemap[]
-			}
-
-		}
-	}
-	*/
