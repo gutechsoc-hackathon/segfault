@@ -44,7 +44,7 @@ int main(int argc, char * argv[])
 	Parser parser;
 	std::list<Person>* pointerToPeopleList = parser.parse(readFileStream);
 	
-	std::cout << "Finished parsing. Done in" << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
+	std::cout << "Finished parsing. Done in" << ((std::clock() - startTime )) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
 	
 	//Loading the Person objects in to the People data structure
 	std::cout << "Loading list of people in to data structure and analysing them...\n";
@@ -54,7 +54,7 @@ int main(int argc, char * argv[])
 	people.load(*pointerToPeopleList, true);
 	delete pointerToPeopleList;
 	
-	std::cout << "Finished loading/analysing. Done in " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
+	std::cout << "Finished loading/analysing. Done in " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
 	
 
 	/*for (std::pair<unsigned long long, Person> hashmapRow : *people.getPeopleMap())
@@ -72,28 +72,28 @@ int main(int argc, char * argv[])
 	//starting to query
 	std::cout << "Question A: Finding how many people there are.\n";
 	std::cout << "There are " << queryCaller.howManyPeopleAreThere() << " people.\n";
-	std::cout << "Took " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
+	std::cout << "Took " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
 	std::cout << "Question B: Finding The average number of relationships (incoming and outgoing) for people with off and even numbers.\n";
 	std::pair<long, long> evenodd = queryCaller.averageNumberOfRelationshipsForOddEvenPeople();
 	std::cout << "The averages are: " << evenodd.first << " for even. " << evenodd.second << " for odd.\n";
-	std::cout << "Took " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
+	std::cout << "Took " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
 	std::cout << "Question C: Finding how many narcissists there are.\n";
 	std::cout << "There are " << queryCaller.howManyNarcissists() << " narcissists.\n";
-	std::cout << "Took " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
+	std::cout << "Took " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
 	std::cout << "Question D: Finding The number of mutual friends.\n";
 	std::cout << "There are " << queryCaller.numberOfMutualFriends() << " two-way relationships.\n";
-	std::cout << "Took " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
+	std::cout << "Took " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
 	std::cout << "Question E: Finding The most disliked person.\n";
 	std::cout << "Poor person ID " << queryCaller.MostDisliked().getID() << " is the most disliked.\n";
-	std::cout << "Took " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
+	std::cout << "Took " << ((std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
 	std::cout << "All done! :)\n\n";
