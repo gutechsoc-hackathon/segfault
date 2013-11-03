@@ -81,7 +81,15 @@ int main(int argc, char * argv[])
 	std::cout << "Took " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms to execute\n\n";
 	startTime = std::clock();
 	
-	std::cout << "All done! :)\n";
+	std::cout << "All done! :)\n\n";
+	
+	cout << "Would you like to run a visualisation? (y/n): ";
+	char answer = getchar();
+	cout << "\n";
+	if(anwer == 'y'){
+		queryCaller.drawVisualisation();
+	}
+	
 	std::getchar();
 	return 0;
 }
