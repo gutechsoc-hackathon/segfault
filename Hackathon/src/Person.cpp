@@ -3,21 +3,21 @@
 
 /* Methods are defined here. The class defenition goes in the HEADER FILE */
 
-  unsigned long long Person :: get_id() 
+  unsigned long long Person :: getID() 
   {
     return id; 
   }
   
-  RelationSet& Person :: get_relationSet()
+  RelationSet& Person :: getRelationSet()
   {
     return relation;
   }
   
-  void Person :: set_id(unsigned long long new_id)
+  void Person :: setID(unsigned long long newID)
   {
-    id = new_id; 
+    id = newID; 
   }
-  void Person :: set_relationSet(RelationSet& new_relation)
+  void Person :: setRelationSet(RelationSet& newRelation)
   {
-    relation = new_relation;
+    relation = newRelation;
   }
