@@ -34,25 +34,40 @@ int main(int argc, char * argv[])
 
 	if (readFileStream.bad())
 		return 2;
-
+	
+	std::cout << "Successfully loaded file.\n\n";
+	
+	//parsing the file in to a list of Person objects
+	std::cout << "Parsing File in to People objects...\n";
+	startTime = std::clock();
+	
 	Parser parser;
 	std::list<Person>* pointerToPeopleList = parser.parse(readFileStream);
-
-	std::cout << "Done, loading list of people in to hashmap...\n";
+	
+	std::cout << "Finished parsing. Done in" << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
+	
+	//Loading the Person objects in to the People data structure
+	std::cout << "Loading list of people in to data structure and analysing them...\n";
+	startTime = std::clock();
+	
 	People people;
 	people.load(*pointerToPeopleList, true);
 	delete pointerToPeopleList;
+	
+	std::cout << "Finished loading/analysing. Done in " << (std::clock() - startTime ) / (double)CLOCKS_PER_SEC)*1000 << "ms.\n\n";
+	
 
-	std::cout << "Done, printing out the hashmap...\n";
-
-	for (std::pair<unsigned long long, Person> hashmapRow : *people.getPeopleMap())
+	/*for (std::pair<unsigned long long, Person> hashmapRow : *people.getPeopleMap())
 	{
 		std::cout << hashmapRow.second.getStringRepresentation() << "\n";	
-	}
+	}*/
 
-	std::cout << "Done, creating a QueryCaller to run queries with...\n\n";
+	std::cout << "Loading stage complete.\nCreating a query caller object and starting queries...\n\n";
 
 	QueryCaller queryCaller(people);
+
+	//resetting the clock before querying
+	startTime = std::clock();
 	
 	//starting to query
 	std::cout << "Question A: Finding how many people there are.\n";
@@ -86,7 +101,7 @@ int main(int argc, char * argv[])
 	cout << "Would you like to run a visualisation? (y/n): ";
 	char answer = getchar();
 	cout << "\n";
-	if(anwer == 'y'){
+	if(answer == 'y'){
 		queryCaller.drawVisualisation();
 	}
 	
