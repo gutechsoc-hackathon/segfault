@@ -11,7 +11,7 @@ public:
   unsigned long long id;
   RelationSet relation;
 
-  unsigned long long get_id();
+  unsigned long long getID();
   
   void setID(unsigned long long new_id);
   RelationSet& getRelationSet();
