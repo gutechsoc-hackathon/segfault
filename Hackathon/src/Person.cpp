@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iomanip>
 
-#include "person.h"
+#include "../include/person.h"
 #include "relation.h"
 
 /* Methods are defined here. The class defenition goes in the HEADER FILE */
