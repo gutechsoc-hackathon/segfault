@@ -99,9 +99,9 @@ int main(int argc, char * argv[])
 	
 	std::cout << "All done! :)\n\n";
 	
-	cout << "Would you like to run a visualisation? (y/n): ";
-	char answer = getchar();
-	cout << "\n";
+	std::cout << "Would you like to run a visualisation? (y/n): ";
+	char answer = std::getchar();
+	std::cout << "\n";
 	if(answer == 'y'){
 		queryCaller.drawVisualisation();
 	}
