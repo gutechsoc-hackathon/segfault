@@ -10,6 +10,5 @@ Connecting to AWS server:
 Useful stuf:
 ==========================
 
-- Public DNS: ec2-54-200-245-21.us-west-2.compute.amazonaws.com
 - Sudo without password: sudo -i
 
