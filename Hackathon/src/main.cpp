@@ -22,37 +22,36 @@ Main.cpp
 
 int main(int argc, char * argv[])
 {
-	// 1. Load the file into a file pointer.
-	//check if there is a specified input file
-	//if (argc < 2)
-	//
+	if (argc < 2)
+		return 1;
 
-	//return -99;
+	std::cout << "Attempting to load file from disk...\n";
+	std::ifstream readFileStream("C:\\relationships-small.txt");
 
-	std::ifstream fd("C:\\relationships-small.txt");
-	if (fd.bad())
-		return -88;
+	if (readFileStream.bad())
+		return 2;
 
-	std::cout << "Found file... Loading the data from the file..." <<std::endl;
-	// 2. Use the parser class to create a list of people.
 	Parser parser;
-	std::list<Person>* pointerToPeopleList = parser.parse(fd);
+	std::list<Person>* pointerToPeopleList = parser.parse(readFileStream);
 
-	std::cout << "Done." << std::endl << std::endl;
+	std::cout << "Done, loading list of people in to hashmap...\n";
+	People people;
+	people.load(*pointerToPeopleList, true);
+	delete pointerToPeopleList;
 
-	// 3. Creating a People object and passing it a pointer to the people liat.
-	std::cout << "loading list of people in to hashmap..." << std::endl;
-	People p;
-	p.load(*pointerToPeopleList, true);
-	std::cout << "Done." << std:: endl << std::endl;
+	std::cout << "Done, printing out the hashmap...\n";
 
-	for (std::pair<unsigned long long, Person> hashmapRow : *p.getPeopleMap())
+	for (std::pair<unsigned long long, Person> hashmapRow : *people.getPeopleMap())
 	{
 		std::cout << hashmapRow.second.getStringRepresentation() << "\n";	
 	}
 
-	delete pointerToPeopleList;
+	std::cout << "Done, creating a QueryCaller to run queries with...\n";
 
+	QueryCaller queryCaller(people);
+	std::cout << "There are " << queryCaller.howManyNarcissists() << "\n narcissists.\n";
+
+	std::cout << "All done! :)\n";
 	std::getchar();
 	return 0;
 }
