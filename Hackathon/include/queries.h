@@ -20,7 +20,7 @@ class QueryCaller
 
 		size_t howManyNarcissists();
 		size_t numberOfMutualFriends();
-		Person& whoIsDislikedTheMost();
+		Person& mostDisliked();
 
 		void drawVisualisation(); 
 		// I think it would be cool to print an ASCII art map to
