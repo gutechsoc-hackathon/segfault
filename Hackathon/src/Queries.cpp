@@ -13,5 +13,11 @@ QueryCaller::~QueryCaller()
 
 size_t QueryCaller::howManyPeopleAreThere()
 {
-	return (size_t) people.get_total_people();
+	return (size_t) people.getTotalPeople();
+}
+
+size_t QueryCaller::howManyNarcissists()
+{
+	// auto peopleMap = people.peopleMap;
+	return 0;
 }
