@@ -12,14 +12,14 @@ class QueryCaller
 	private:
 		People& people;
     public:
-        QueryCaller(const People& people);
+        QueryCaller(People& people);
         ~QueryCaller();
 
 		size_t howManyPeopleAreThere(); // Done!
-		size_t averageNumberOfRelationshipsForOddEvenPeople();
+		std::pair<long,long> averageNumberOfRelationshipsForOddEvenPeople();
 
 		size_t howManyNarcissists();
-		size_t betweenTwoPeopleHowManyFriendOfs();
+		size_t numberOfMutualFriends();
 		Person& whoIsDislikedTheMost();
 
 		void drawVisualisation(); 
