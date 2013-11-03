@@ -20,6 +20,7 @@ Main.cpp
 #include "../include/person.h"
 #include "../include/relation.h"
 #include "../include/parser.h"
+#include "../include/queries.h"
 
 int main(int argc, char * argv[])
 {
