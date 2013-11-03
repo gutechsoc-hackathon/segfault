@@ -30,7 +30,7 @@ int main(int argc, char * argv[])
 		return 1;
 
 	std::cout << "Attempting to load file from disk...\n";
-	std::ifstream readFileStream("C:\\relationships-small.txt");
+	std::ifstream readFileStream("/home/ubuntu/relationships-big.txt");
 
 	if (readFileStream.bad())
 		return 2;
