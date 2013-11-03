@@ -38,16 +38,18 @@ void People::computeIncomingRelations(){
 		{
 			for (unsigned long long buddyPersonID : person->second.getRelationSet().out[i])
 			{
-				Person* buddyPerson = &(peopleMap->find(buddyPersonID)->second);
+				Hashmap::iterator buddyPersonIterator = peopleMap->find(buddyPersonID);
 
-				buddyPerson->getRelationSet().in[i].push_back(
+				if (buddyPersonIterator == peopleMap->end())
+					continue;
+
+				buddyPersonIterator->second.getRelationSet().in[i].push_back(
 					person->first);
 
 				// This code takes the old buddy's IN relations and appends the person's OUT relations.
 			}
 		}
 	}
-	
 }
 
 People::Hashmap* People :: getPeopleMap()
