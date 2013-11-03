@@ -15,7 +15,7 @@ class QueryCaller
         QueryCaller(const People& people);
         ~QueryCaller();
 
-		size_t howManyPeopleAreThere(); // Michael's writing this one.
+		size_t howManyPeopleAreThere(); // Done!
 		size_t averageNumberOfRelationshipsForOddEvenPeople();
 
 		size_t howManyNarcissists();
