@@ -14,11 +14,11 @@ bool People::load(std::list<Person>& personList, bool analyse){
 
 	//then we load each person in to the hashmap
 	for(Person& person : personList){
-		peopleMap->emplace(person.get_id(),person);
+		peopleMap->emplace(person.getID(),person);
 	}
 
 	if(analyse){
-		compute_incoming_relations();
+		person.computeIncomingRelations();
 	}
 	return true;
 }
@@ -36,11 +36,11 @@ void People::computeIncomingRelations(){
 	{
 		for (unsigned int i = 0; i < 5; ++i)
 		{
-			for (unsigned long long buddyPersonID : person->second.get_relationSet().out[i])
+			for (unsigned long long buddyPersonID : person->second.getRelationSet().out[i])
 			{
 				Person* buddyPerson = &(peopleMap->find(buddyPersonID)->second);
 
-				buddyPerson->get_relationSet().in[i].push_back(
+				buddyPerson->getRelationSet().in[i].push_back(
 					person->first);
 
 				// This code takes the old buddy's IN relations and appends the person's OUT relations.
